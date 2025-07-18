@@ -1,0 +1,23 @@
+/mkdir.b -p dir1/dir2
+/ls.b /dir1
+cd ./dir1
+pwd
+cd ..
+/ls.b /dir1
+declare -x ls_alias=/ls.b
+$ls_alias /dir1
+/echo.b $ls_alias
+declare echo_alias=/echo.b
+declare
+/sh.b
+echo $echo_alias
+echo $ls_alias
+declare -x ls_alias=/echo.b
+$ls_alias $ls_alias
+exit
+$echo_alias $ls_alias
+declare var_dir1=/dir1
+cd /
+cd $var_dir1/dir2
+pwd
+/halt.b
